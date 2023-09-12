@@ -76,7 +76,7 @@
                                         <asp:TemplateField HeaderText="MANAGE">
                                             <ItemTemplate>
                                                 <asp:LinkButton runat="server" ID="btnEdit" CssClass="btn btn-sm btn-primary" CommandName="Edit" Text="EDIT" ></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <asp:LinkButton runat="server" ID="btnDelete" CssClass="btn btn-sm btn-danger" CommandName="Delete" Text="DELETE" ></asp:LinkButton>
+                                                <asp:LinkButton runat="server" ID="btnDelete" CssClass="btn btn-sm btn-danger" OnClientClick="return confirm('Are you sure you want to delete this Product?');" CommandName="Delete" Text="DELETE" ></asp:LinkButton>
                                             </ItemTemplate>
                                             <EditItemTemplate>
                                                 <asp:LinkButton runat="server" ID="btnUpdate" CssClass="btn btn-sm btn-success" CommandName="Update" Text="UPDATE" ></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;

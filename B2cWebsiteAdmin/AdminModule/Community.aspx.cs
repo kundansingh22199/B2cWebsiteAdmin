@@ -56,7 +56,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 1 *  1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 *  1024; int maxsize = 2 * 1024 * 1024, count=0 ;
                 bool status = true;
                 string filename = "", filename2 = "", filename3 = "";
                 int fileSize3 = 0, fileSize1 = 0, fileSize2 = 0;
@@ -101,16 +101,12 @@ namespace B2cWebsiteAdmin.AdminModule
                     else
                     {
                         filename = ViewState["communityimage1"].ToString();
-                        lblmassage.Text = "Don't match file Size";
-                        lblmassage.ForeColor = Color.Red;
+                        count++;
                     }
                 }
                 else
                 {
                     filename = ViewState["communityimage1"].ToString();
-                    
-
-
                 }
                 if (FileUpload2.HasFile)
                 {
@@ -125,8 +121,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     else
                     {
                         filename2 = ViewState["communityimage2"].ToString();
-                        lblmassage.Text = "Don't match file Size";
-                        lblmassage.ForeColor = Color.Red;
+                        count++;
                     }
                 }
                 else
@@ -148,8 +143,9 @@ namespace B2cWebsiteAdmin.AdminModule
                     else
                     {
                         filename3 = ViewState["communityimage3"].ToString();
-                        lblmassage.Text = "Don't match file Size";
-                        lblmassage.ForeColor = Color.Red;
+                        //lblmassage.Text = "Don't match file Size";
+                        //lblmassage.ForeColor = Color.Red;
+                        count++;
                     }
                 }
                 else
@@ -179,9 +175,9 @@ namespace B2cWebsiteAdmin.AdminModule
 
                 //}
 
-                if (status == true)
+                if (status == true && count==0)
                 {
-
+                    int result = 0;
                     SqlCommand cmd = new SqlCommand("SP_TblCommunityMaster", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@communityimage1", filename);
@@ -198,20 +194,29 @@ namespace B2cWebsiteAdmin.AdminModule
                         con.Open();
                     }
                     
-                    cmd.ExecuteNonQuery();
+                    result=cmd.ExecuteNonQuery();
                     con.Close();
                     DataBind1();
-                    // Response.Write("<script>alert('Data has been successfully updated');</script>");
-                    messagebox.Visible = true;
-                    messageboxerror.Visible = false;
+                    if (result > 0)
+                    {
+                        messagebox.Visible = true;
+                        messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
+                    }
+                    else
+                    {
+                        messagebox.Visible = false;
+                        messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
+                    }
                     txtheading.Text = txtlink.Text = txtcontent.Text = "";
 
                 }
                 else
                 {
                     messagebox.Visible = false;
-                    messageboxerror.Visible = true;
-                    //Response.Write("<script>alert('error something wrong ');</script>");
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
                 }
 
             }

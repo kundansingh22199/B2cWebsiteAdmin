@@ -37,7 +37,10 @@
                                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                             <strong>Error!</strong> something wrong
                                         </div>
-
+                                        <div class="alert alert alert-dismissible bg-danger" runat="server" visible="false" id="ImageSizeAlert">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>Error!</strong> Don't Match Image Size 10KB to 3MB  Or Extension
+                                        </div>
 
 
 
@@ -46,16 +49,14 @@
                                             <div class="tab-content card-block">
                                                 <div class="row nav1" style="font-family: serif; background: linear-gradient(#d9d9d9,white);">
 
-                                                    <div class="col-sm-4 button" style="text-align: center">
-
-                                                        <asp:LinkButton runat="server" ID="lnkbtn1" CssClass="pan" Style="font-size: 23px;" OnClick="lnkbtn1_Click">Slider First</asp:LinkButton>
+                                                    <div class="col-sm-4 button" style="text-align: center; margin:0px; padding:0px;"  runat="server" id="tabpan1">
+                                                        <asp:LinkButton runat="server" ID="lnkbtn1" CssClass="pan" Style="font-size: 23px; display:block;margin:0px;padding:0px;" OnClick="lnkbtn1_Click">Slider First</asp:LinkButton>
                                                     </div>
-                                                    <div class="col-sm-4 button" style="text-align: center">
-                                                        <asp:LinkButton runat="server" ID="lnkBtnSlider2" CssClass="pan" Style="font-size: 23px;" OnClick="lnkBtnSlider2_Click">Slider Second</asp:LinkButton>
+                                                    <div class="col-sm-4 button" style="text-align: center; margin:0px; padding:0px;" runat="server" id="tabpan2">
+                                                        <asp:LinkButton runat="server" ID="lnkBtnSlider2" CssClass="pan" Style="font-size: 23px; display:block;margin:0px;padding:0px;" OnClick="lnkBtnSlider2_Click">Slider Second</asp:LinkButton>
                                                     </div>
-                                                    <div class="col-sm-4 button" style="text-align: center" id="thirdslide" runat="server">
-                                                        <asp:LinkButton runat="server" ID="lnkbtnslider3" CssClass="pan" Style="font-size: 23px;" OnClick="lnkbtnslider3_Click">Slider Third</asp:LinkButton>
-
+                                                    <div class="col-sm-4 button" style="text-align: center; margin:0px; padding:0px;" id="tabpan3" runat="server">
+                                                        <asp:LinkButton runat="server" ID="lnkbtnslider3" CssClass="pan" Style="font-size: 23px; display:block;margin:0px;padding:0px;" OnClick="lnkbtnslider3_Click">Slider Third</asp:LinkButton>
                                                     </div>
 
                                                 </div>
@@ -156,50 +157,44 @@
                                                                         <div class="form-group row">
 
 
-                                                                            <div class=" col-sm-3 col-lg-2 col-md-3">
+                                                                            <div class=" col-sm-2 col-lg-2 col-md-3">
                                                                                 <label class=" col-form-label">
                                                                                     <h4>Image :</h4>
                                                                                 </label>
                                                                             </div>
-                                                                            <div class="col-md-9">
+                                                                            <div class="col-md-4">
                                                                                 <asp:FileUpload ID="FileUpload1" class="form-control" runat="server" />
                                                                             </div>
-
-                                                                        </div>
-
-
-                                                                        <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col-form-label">
+                                                                            <label class="col-sm-2 col-lg-2 col-form-label">
                                                                                 <h4>Heading :</h4>
                                                                             </label>
-                                                                            <div class="col-sm-9">
+                                                                            <div class="col-sm-4">
                                                                                 <asp:TextBox ID="s1txtheading" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Hading" MaxLength="38" MinLenth="20"></asp:TextBox>
                                                                             </div>
                                                                         </div>
+
+                                                                        
                                                                         <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col col-form-label">
-                                                                                <h4>Content :</h4>
-                                                                            </label>
-                                                                            <div class="col-sm-9">
-                                                                                <asp:TextBox ID="s1txtcontent" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Contant"></asp:TextBox>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col col-form-label">
+                                                                            <label class="col-sm-2 col col-form-label">
                                                                                 <h4>Link 1 :</h4>
                                                                             </label>
-                                                                            <div class="col-sm-9">
+                                                                            <div class="col-sm-4">
                                                                                 <asp:TextBox ID="s1txtlink" onkeypress="return isUrlValid(event)" runat="server" class="form-control" placeholder="Type your link first"></asp:TextBox>
+                                                                            </div>
+                                                                            <label class="col-sm-2 col col-form-label">
+                                                                                <h4>Link 2 :</h4>
+                                                                            </label>
+                                                                            <div class="col-sm-4">
+                                                                                <asp:TextBox ID="txtlink1s1" onkeypress="return isUrlValid(event)" runat="server" class="form-control" placeholder="Type your link second "></asp:TextBox>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col col-form-label">
-                                                                                <h4>Link 2 :</h4>
+                                                                            <label class="col-sm-2 col col-form-label">
+                                                                                <h4>Content :</h4>
                                                                             </label>
-                                                                            <div class="col-sm-9">
-                                                                                <asp:TextBox ID="txtlink1s1" onkeypress="return isUrlValid(event)" runat="server" class="form-control" placeholder="Type your link second "></asp:TextBox>
+                                                                            <div class="col-sm-10">
+                                                                                <asp:TextBox ID="s1txtcontent" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Contant"></asp:TextBox>
                                                                             </div>
-
                                                                         </div>
                                                                         <div class="form-group row">
 
@@ -316,48 +311,41 @@
                                                                         <div class="form-group row">
 
 
-                                                                            <div class=" col-sm-3 col-lg-2 col-md-3">
+                                                                            <div class=" col-sm-2 col-lg-2 col-md-3">
                                                                                 <label class=" col-form-label">
                                                                                     <h4>Image :</h4>
                                                                                 </label>
                                                                             </div>
-                                                                            <div class="col-md-9">
+                                                                            <div class="col-md-4">
                                                                                 <asp:FileUpload ID="FileUpload2" class="form-control" runat="server" />
                                                                             </div>
-
-                                                                        </div>
-
-
-                                                                        <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col-form-label">
+                                                                            <label class="col-sm-2 col-lg-2 col-form-label">
                                                                                 <h4>Heading :</h4>
                                                                             </label>
-                                                                            <div class="col-sm-9">
+                                                                            <div class="col-sm-4">
                                                                                 <asp:TextBox ID="sliderheading2s2" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Hading" MaxLength="38" MinLenth="20"></asp:TextBox>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col col-form-label">
-                                                                                <h4>Content :</h4>
+                                                                            <label class="col-sm-2 col-lg-2 col col-form-label">
+                                                                                <h4>Link 1 :</h4>
                                                                             </label>
-                                                                            <div class="col-sm-9">
-                                                                                <asp:TextBox ID="slidercontent2s2" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Contant"></asp:TextBox>
+                                                                            <div class="col-sm-4">
+                                                                                <asp:TextBox ID="sliderlink1s2" onkeypress="return isUrlValid(event)" runat="server" class="form-control" placeholder="Type your link first"></asp:TextBox>
+                                                                            </div>
+                                                                            <label class="col-sm-2 col-lg-2 col col-form-label">
+                                                                                <h4>Link 2 :</h4>
+                                                                            </label>
+                                                                            <div class="col-sm-4">
+                                                                                <asp:TextBox ID="sliderlink2s2" onkeypress="return isUrlValid(event)" runat="server" class="form-control" placeholder="Type your link second "></asp:TextBox>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col col-form-label">
-                                                                                <h4>Link 1 :</h4>
+                                                                            <label class="col-sm-2 col-lg-2 col col-form-label">
+                                                                                <h4>Content :</h4>
                                                                             </label>
-                                                                            <div class="col-sm-9">
-                                                                                <asp:TextBox ID="sliderlink1s2" onkeypress="return isUrlValid(event)" runat="server" class="form-control" placeholder="Type your link first"></asp:TextBox>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row" runat="server" id="link2Row" visible="true">
-                                                                            <label class="col-sm-3 col-lg-2 col col-form-label">
-                                                                                <h4>Link 2 :</h4>
-                                                                            </label>
-                                                                            <div class="col-sm-9">
-                                                                                <asp:TextBox ID="sliderlink2s2" onkeypress="return isUrlValid(event)" runat="server" class="form-control" placeholder="Type your link second "></asp:TextBox>
+                                                                            <div class="col-sm-10">
+                                                                                <asp:TextBox ID="slidercontent2s2" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Contant"></asp:TextBox>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
@@ -471,47 +459,42 @@
                                                                     <for>
                                                                         <div class="form-group row">
 
-                                                                            <div class=" col-sm-3 col-lg-2 col-md-3">
+                                                                            <div class=" col-sm-2 col-lg-2 col-md-3">
                                                                                 <label class=" col-form-label">
                                                                                     <h4>Image :</h4>
                                                                                 </label>
                                                                             </div>
-                                                                            <div class="col-md-9">
+                                                                            <div class="col-md-4">
                                                                                 <asp:FileUpload ID="FileUpload3" class="form-control" runat="server" />
                                                                             </div>
-                                                                        </div>
-
-
-                                                                        <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col-form-label">
+                                                                            <label class="col-sm-2 col-lg-2 col-form-label">
                                                                                 <h4>Heading :</h4>
                                                                             </label>
-                                                                            <div class="col-sm-9">
+                                                                            <div class="col-sm-4">
                                                                                 <asp:TextBox ID="s3txtheading" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Heading" MaxLength="38" MinLenth="20"></asp:TextBox>
                                                                             </div>
                                                                         </div>
+
                                                                         <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col col-form-label">
-                                                                                <h4>Content :</h4>
-                                                                            </label>
-                                                                            <div class="col-sm-9">
-                                                                                <asp:TextBox ID="s3txtcontent" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Contant"></asp:TextBox>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label class="col-sm-3 col-lg-2 col col-form-label">
+                                                                            <label class="col-sm-2 col-lg-2 col col-form-label">
                                                                                 <h4>Link 1 :</h4>
                                                                             </label>
-                                                                            <div class="col-sm-9">
+                                                                            <div class="col-sm-4">
                                                                                 <asp:TextBox ID="s3txtlonk1" onkeypress="return isUrlValid(event)" runat="server" class="form-control" placeholder="Type your link first"></asp:TextBox>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="form-group row" runat="server" visible="true">
-                                                                            <label class="col-sm-3 col-lg-2 col col-form-label">
+                                                                            <label class="col-sm-2 col-lg-2 col col-form-label">
                                                                                 <h4>Link 2 :</h4>
                                                                             </label>
-                                                                            <div class="col-sm-9">
+                                                                            <div class="col-sm-4">
                                                                                 <asp:TextBox ID="txtlink2s3" onkeypress="return isUrlValid(event)" runat="server" class="form-control" placeholder="Type your link second "></asp:TextBox>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-2 col-lg-2 col col-form-label">
+                                                                                <h4>Content :</h4>
+                                                                            </label>
+                                                                            <div class="col-sm-10">
+                                                                                <asp:TextBox ID="s3txtcontent" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Contant"></asp:TextBox>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">

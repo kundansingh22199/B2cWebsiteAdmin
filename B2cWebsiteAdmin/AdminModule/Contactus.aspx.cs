@@ -59,7 +59,7 @@ namespace B2cWebsiteAdmin.AdminModule
                 bool status = true,fsize=true;
                 //string imagesection1, imagesection2, headingSection1, contentsection2 = "";
                 string imagesection1, headingSection1, contentsection2 = "";
-                int minsize = 60 * 1024; int maxsize = 500 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024;
                 //int filesize1 = 0, filesize2 = 0;
                 int filesize1 = 0;
                 if (FileUpload1.HasFile)
@@ -127,7 +127,8 @@ namespace B2cWebsiteAdmin.AdminModule
                     {
 
                         messagebox.Visible = true;
-                        messageboxerror.Visible = false; 
+                        messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         GetSectionContact();
                        // Response.Write("<script>alert('Data has been successfully updated');</script>");
                     }
@@ -136,13 +137,16 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetSectionContact();
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                         //Response.Write("<script>alert('error something wrong ');</script>");
                     }
                 }
-                
-
-
-
+                else
+                {
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
+                }
             }
             catch (Exception ex)
             {

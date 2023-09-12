@@ -48,7 +48,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "";
                 int fileSize1 = 0, fileSize2 = 0;
@@ -113,7 +113,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -133,7 +133,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -142,7 +142,7 @@ namespace B2cWebsiteAdmin.AdminModule
 
                 }
 
-                if (status == true)
+                if (status == true && count==0)
                 {
                     int result = clsSafe.DataInsertSafeGold(filename1, filename2, heading1, heading2, content1, content2, buttonlink, "");
                     if (result > 0)
@@ -150,6 +150,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataSafe();
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         //lblmassage.Text = "Update Success";
                         //lblmassage.ForeColor = Color.Green;
                         txtheading1.Text = txtheading2.Text = txtcontent2.Text = txtcontent1.Text = txtbuttonlink.Text = "";
@@ -159,9 +160,16 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataSafe();
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                         //lblmassage.Text = "Update Not Success";
                         //lblmassage.ForeColor = Color.Red;
                     }
+                }
+                else
+                {
+                    ImageSizeAlert.Visible = true;
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
                 }
             }
             catch (Exception ex)

@@ -54,7 +54,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "", filename3 = "";
                 int fileSize3 = 0, fileSize1 = 0, fileSize2 = 0;
@@ -162,15 +162,13 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        filename1 = ViewState["image1"].ToString();
+                        count++;
                     }
                 }
                 else
                 {
                     filename1 = ViewState["image1"].ToString();
-
-
-
                 }
                 if (image2.HasFile)
                 {
@@ -184,7 +182,8 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        filename2 = ViewState["image2"].ToString();
+                        count++;
                     }
                 }
                 else
@@ -205,7 +204,8 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        filename3 = ViewState["image3"].ToString();
+                        count++;
                     }
                 }
                 else
@@ -213,7 +213,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     filename3 = ViewState["image3"].ToString();
 
                 }
-                if (status == true)
+                if (status == true && count==0)
                 {
                     int result = clsAEPS.DataInsertAEPS(filename1, filename2, filename3, heading1, heading2, heading3, content1, content2, content3, paragraph1, paragraph2, paragraph3, buttonlink, "");
                     if (result > 0)
@@ -221,6 +221,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataAeps();
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         //Response.Write("<script>alert('Data has been successfully updated');</script>");
                         txtheading1.Text = txtheading2.Text = txtheading3.Text= txtContent1.Text= txtcontent2.Text= txtcontent3.Text = txtparagraph1.Text= txtparagraph2.Text= txtparagraph3.Text= txtbuttonLink.Text="";
                     }
@@ -229,10 +230,16 @@ namespace B2cWebsiteAdmin.AdminModule
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
                         //Response.Write("<script>alert('error something wrong ');</script>");
-
+                        ImageSizeAlert.Visible = false;
                         txtheading1.Text = txtheading2.Text = txtheading3.Text = txtContent1.Text = txtcontent2.Text = txtcontent3.Text = txtparagraph1.Text = txtparagraph2.Text = txtparagraph3.Text = txtbuttonLink.Text = "";
 
                     }
+                }
+                else
+                {
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
                 }
             }
             catch (Exception ex)

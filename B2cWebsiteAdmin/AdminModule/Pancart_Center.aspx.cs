@@ -56,7 +56,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "", filename3 = "";
                 int fileSize3 = 0, fileSize1 = 0, fileSize2 = 0;
@@ -164,7 +164,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -186,7 +186,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -207,7 +207,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -215,7 +215,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     filename3 = ViewState["image3"].ToString();
 
                 }
-                if (status == true)
+                if (status == true && count==0)
                 {
                     int result = clsPan.DataInsertPanCard(filename1, filename2, filename3, heading1, heading2, heading3, content1, content2, paragraph1, paragraph2, paragraph3, paragraph4, buttonlink, "");
                     if (result > 0)
@@ -236,6 +236,12 @@ namespace B2cWebsiteAdmin.AdminModule
                         txtheading1.Text = txtheading2.Text = txtheading3.Text = txtbuttonLink.Text = lblParagraph4.Text = lblParagraph3.Text = lblParagraph2.Text = lblParagraph1.Text = "";
 
                     }
+                }
+                else
+                {
+                    ImageSizeAlert.Visible = true;
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
                 }
             }
             catch (Exception ex)

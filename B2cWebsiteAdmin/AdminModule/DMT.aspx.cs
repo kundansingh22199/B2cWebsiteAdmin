@@ -57,7 +57,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 50 * 1024; int maxsize = 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024;
                 bool status = true, sizematch = true;
                 //string filename1 = "", filename2 = "", filename3 = "";
                 string filename1 = "";
@@ -184,9 +184,6 @@ namespace B2cWebsiteAdmin.AdminModule
                 else
                 {
                     filename1 = ViewState["image1"].ToString();
-
-
-
                 }
                 //if (image2.HasFile)
                 //{
@@ -244,6 +241,7 @@ namespace B2cWebsiteAdmin.AdminModule
                             GetDataDMT();
                             messagebox.Visible = true;
                             messageboxerror.Visible = false;
+                            ImageSizeAlert.Visible = false;
                             // Response.Write("<script>alert('Data has been successfully updated');</script>");
                             //txtheading1.Text = txtheading2.Text = txtheading3.Text = txtbuttonLink.Text = txtparagraph3.Text = txtparagraph2.Text = txtparagraph1.Text = txtcontent3.Text = txtcontent2.Text = txtContent1.Text = "";
                             txtheading1.Text = txtcontent4.Text = txtcontent3.Text = txtcontent2.Text = txtContent1.Text = "";
@@ -254,8 +252,15 @@ namespace B2cWebsiteAdmin.AdminModule
                             GetDataDMT();
                             messagebox.Visible = false;
                             messageboxerror.Visible = true;
+                            ImageSizeAlert.Visible = false;
                             //Response.Write("<script>alert('error something wrong ');</script>");
                         }
+                    }
+                    else
+                    {
+                        messagebox.Visible = false;
+                        messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = true;
                     }
                 }
             }

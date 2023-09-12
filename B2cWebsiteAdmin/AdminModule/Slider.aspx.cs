@@ -22,7 +22,7 @@ namespace B2cWebsiteAdmin.AdminModule
         string filename = "", filename2 = "", filename3 = "";
         int fileSize3 = 0, fileSize1 = 0, fileSize2 = 0;
         string lblheading11 = "", lblcontent1s11 = "", s1txtlink11 = "", s1txtlink21 = "", lblheadingS21 = "", lblcontentS21 = "", lblLink1s21 = "", lblLink2s21 = "", lblheading31 = "", lblcontent31 = "", lbllink1s31 = "", lbllink2s31 = "";
-        int minsize = 70 * 1024; int maxsize = 1024 * 1024 * 1024;
+        int minsize = 10 * 1024; int maxsize = 3 * 1024 * 1024, count1=0, count2=0, count3=0;
         bool status = true;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -120,13 +120,14 @@ namespace B2cWebsiteAdmin.AdminModule
                     {
 
                         filename2 = Path.GetFileName(FileUpload2.PostedFile.FileName);
-                        FileUpload2.SaveAs(Server.MapPath(FileUpload2.PostedFile.FileName));
+                        FileUpload2.SaveAs(Server.MapPath("~/AdminModule/Images/" + filename2));
                         filename2 = "~/AdminModule/Images/" + filename2;
                         status = checkexetion(FileUpload2);
                     }
                     else
                     {
                         filename2 = ViewState["slider2"].ToString();
+                        count2++;
                     }
                 }
                 else
@@ -136,7 +137,7 @@ namespace B2cWebsiteAdmin.AdminModule
                 }
 
 
-                if (status == true)
+                if (status == true && count2==0)
                 {
 
                     SqlCommand cmd = new SqlCommand("SP_Slider2Update", con);
@@ -169,11 +170,13 @@ namespace B2cWebsiteAdmin.AdminModule
                         ////ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "ShowPopup2();", true);
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                     }
                     else
                     {
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                     }
                     slidercontent2s2.Text = "";
                     sliderheading2s2.Text = "";
@@ -182,13 +185,11 @@ namespace B2cWebsiteAdmin.AdminModule
 
                 }
 
-
-
-
                 else
                 {
-                    //txtmessage.Text = "Image format is not not match  ";
-                    //txtmessage.ForeColor = Color.Red;
+                    messageboxerror.Visible = false;
+                    messagebox.Visible = false;
+                    ImageSizeAlert.Visible = true;
                 }
 
             }
@@ -233,6 +234,16 @@ namespace B2cWebsiteAdmin.AdminModule
             SliderSectionThree.Visible = false;
             messagebox.Visible = false;
             messageboxerror.Visible = false;
+            //tabpan1.Attributes["Style"] = $"background-color:#0A77F4";
+            //tabpan1.Attributes["Style"] = $"color:white";
+            Color colour = ColorTranslator.FromHtml("#004EF9");
+            lnkbtn1.BackColor = colour;
+            lnkbtn1.ForeColor = Color.White;
+
+            lnkBtnSlider2.BackColor = Color.Empty;
+            lnkBtnSlider2.ForeColor = Color.Empty;
+            lnkbtnslider3.BackColor = Color.Empty;
+            lnkbtnslider3.ForeColor = Color.Empty;
         }
 
         protected void lnkBtnSlider2_Click(object sender, EventArgs e)
@@ -242,6 +253,16 @@ namespace B2cWebsiteAdmin.AdminModule
             SliderSectionThree.Visible = false;
             messagebox.Visible = false;
             messageboxerror.Visible = false;
+            //tabpan2.Attributes["Style"] = $"background-color:#0A77F4";
+            //tabpan2.Attributes["Style"] = $"color:white";
+            Color colour = ColorTranslator.FromHtml("#004EF9");
+            lnkBtnSlider2.BackColor = colour;
+            lnkBtnSlider2.ForeColor = Color.White;
+
+            lnkbtn1.BackColor = Color.Empty;
+            lnkbtn1.ForeColor = Color.Empty;
+            lnkbtnslider3.BackColor = Color.Empty;
+            lnkbtnslider3.ForeColor = Color.Empty;
         }
 
         protected void lnkbtnslider3_Click(object sender, EventArgs e)
@@ -251,6 +272,16 @@ namespace B2cWebsiteAdmin.AdminModule
             SliderSectionThree.Visible = true;
             messagebox.Visible = false;
             messageboxerror.Visible = false;
+            //tabpan3.Attributes["Style"] = $"background-color:#0A77F4";
+            //tabpan3.Attributes["Style"] = $"color:white";
+            Color colour = ColorTranslator.FromHtml("#004EF9");
+            lnkbtnslider3.BackColor = colour;
+            lnkbtnslider3.ForeColor = Color.White;
+
+            lnkbtn1.BackColor = Color.Empty;
+            lnkbtn1.ForeColor = Color.Empty;
+            lnkBtnSlider2.BackColor = Color.Empty;
+            lnkBtnSlider2.ForeColor = Color.Empty;
         }
 
 
@@ -305,6 +336,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
+                        count1++;
                         filename = ViewState["slider1"].ToString();
                     }
                 }
@@ -314,7 +346,7 @@ namespace B2cWebsiteAdmin.AdminModule
 
 
                 }
-                if (status == true)
+                if (status == true && count1==0)
                 {
 
                     SqlCommand cmd = new SqlCommand("SP_Slider1tUpdate", con);
@@ -343,13 +375,21 @@ namespace B2cWebsiteAdmin.AdminModule
                     {
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                     }
                     else
                     {
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                     }
 
+                }
+                else
+                {
+                    ImageSizeAlert.Visible = true;
+                    messageboxerror.Visible = false;
+                    messagebox.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -407,19 +447,15 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
+                        count3++;
                         filename3 = ViewState["slider3"].ToString();
                     }
                 }
                 else
-
-
-
-
                 {
                     filename3 = ViewState["slider3"].ToString();
-
                 }
-                if (status == true)
+                if (status == true && count3==0)
                 {
                     SqlCommand cmd = new SqlCommand("SP_Slider3Update", con);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -448,12 +484,20 @@ namespace B2cWebsiteAdmin.AdminModule
                     {
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                     }
                     else
                     {
-                        messagebox.Visible = true;
-                        messageboxerror.Visible = false;
+                        messagebox.Visible = false;
+                        messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                     }
+                }
+                else
+                {
+                    ImageSizeAlert.Visible = true;
+                    messageboxerror.Visible = false;
+                    messagebox.Visible = false;
                 }
             }
             catch (Exception ex)

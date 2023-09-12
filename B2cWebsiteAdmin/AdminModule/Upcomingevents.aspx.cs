@@ -57,7 +57,7 @@ namespace B2cWebsiteAdmin.AdminModule
             string userid = Session["userid"].ToString();
             try
             {
-                int minsize = 60 * 1024; int maxsize = 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "", filename3 = "";
                 int fileSize1 = 0, fileSize2 = 0, fileSize3 = 0;
@@ -94,7 +94,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -114,7 +114,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     else
                     {
                         filename3 = ViewState["Div3image"].ToString();
-                       
+                        count++;
                     }
                 }
                 else
@@ -193,7 +193,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     Div3Content = lbldiv3content.Text;
                 }
 
-                if (status == true)
+                if (status == true && count==0)
                 {
                     //int result = clsHomeSection4.HomeSection4Insert(filename1, filename2, filename3, heading1, content1, Div1heading2, Div2heading2, Div3heading2, userid, userid);
                     int result = clsHomeSection4.HomeSection4Insert(filename1, filename2, filename3, heading1, Div1heading2,Div1Content, Div2heading2, Div2Content, Div3heading2, Div3Content, userid, userid);
@@ -204,14 +204,21 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataHomeSection4();
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                     }
                     else
                     {
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                     }
                 }
-
+                else
+                {
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
+                }
 
 
             }

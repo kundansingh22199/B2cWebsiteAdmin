@@ -56,7 +56,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename = "";
                 int fileSize1 = 0;
@@ -77,6 +77,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         lblmassage.Text = "Don't match file Size";
                         lblmassage.ForeColor = Color.Red;
                         filename = ViewState["ImageWhyus"].ToString();
+                        count++;
                     }
                 }
                 else
@@ -133,34 +134,45 @@ namespace B2cWebsiteAdmin.AdminModule
                 {
                     contentfifth = lblcontents5.Text;
                 }
-                string strcon = getConnectionString.getconnection();
-                SqlConnection con = new SqlConnection(strcon);
-                SqlCommand cmd = new SqlCommand("Sp_TblWhyUs", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ImageWhyUs", filename);
-                cmd.Parameters.AddWithValue("@ContentFirst", contentFirst);
-                cmd.Parameters.AddWithValue("@ContentSecound", contentsecound);
-                cmd.Parameters.AddWithValue("@ContentThird", contentthird);
-                cmd.Parameters.AddWithValue("@ContentFouth", contentfouth);
-                cmd.Parameters.AddWithValue("@ContentFifth", contentfifth);
-                cmd.Parameters.AddWithValue("@ButtonLink", buttonlink);
-                cmd.Parameters.AddWithValue("@CreateBy","");
-                cmd.Parameters.AddWithValue("@UpdateBy","");
-                con.Open();
-               int result= cmd.ExecuteNonQuery();
-                con.Close();
-                GetWhyus();
+                if (count == 0) 
+                { 
+                    string strcon = getConnectionString.getconnection();
+                    SqlConnection con = new SqlConnection(strcon);
+                    SqlCommand cmd = new SqlCommand("Sp_TblWhyUs", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ImageWhyUs", filename);
+                    cmd.Parameters.AddWithValue("@ContentFirst", contentFirst);
+                    cmd.Parameters.AddWithValue("@ContentSecound", contentsecound);
+                    cmd.Parameters.AddWithValue("@ContentThird", contentthird);
+                    cmd.Parameters.AddWithValue("@ContentFouth", contentfouth);
+                    cmd.Parameters.AddWithValue("@ContentFifth", contentfifth);
+                    cmd.Parameters.AddWithValue("@ButtonLink", buttonlink);
+                    cmd.Parameters.AddWithValue("@CreateBy","");
+                    cmd.Parameters.AddWithValue("@UpdateBy","");
+                    con.Open();
+                    int result= cmd.ExecuteNonQuery();
+                    con.Close();
+                    GetWhyus();
                
-                txtbuttonLink.Text = txtcontent5.Text = txtcontent4.Text = txtcontent3.Text = txtcontent2.Text = txtContent1.Text = "";
-                if (result > 0)
-                {
-                    messagebox.Visible = true;
-                    messageboxerror.Visible = false;
+                    txtbuttonLink.Text = txtcontent5.Text = txtcontent4.Text = txtcontent3.Text = txtcontent2.Text = txtContent1.Text = "";
+                    if (result > 0)
+                    {
+                        messagebox.Visible = true;
+                        messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
+                    }
+                    else
+                    {
+                        messagebox.Visible = false;
+                        messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
+                    }
                 }
                 else
                 {
+                    ImageSizeAlert.Visible = true;
                     messagebox.Visible = false;
-                    messageboxerror.Visible = true;
+                    messageboxerror.Visible = false;
                 }
             }
             

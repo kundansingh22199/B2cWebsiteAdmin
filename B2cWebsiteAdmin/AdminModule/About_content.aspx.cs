@@ -62,7 +62,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename = "";
                 int fileSize1 = 0;
@@ -116,6 +116,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     else
                     {
                         filename = ViewState["image"].ToString();
+                        count++;
                     }
                 }
                 else
@@ -125,7 +126,7 @@ namespace B2cWebsiteAdmin.AdminModule
 
 
                 }
-                if (status == true)
+                if (status == true && count==0)
                 {
 
                     SqlCommand cmd = new SqlCommand("Sp_TblAboutMaster", con);
@@ -140,12 +141,20 @@ namespace B2cWebsiteAdmin.AdminModule
                     cmd.Parameters.AddWithValue("@CreateBy", "");
 
                     con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    DataBind1();
-                    //Response.Write("<script>alert('Data has been successfully updated');</script>");
-                    messagebox.Visible = true;
-                    messageboxerror.Visible = false;
+                    int result=cmd.ExecuteNonQuery();
+                    if (result > 0)
+                    {
+                        con.Close();
+                        DataBind1();
+                        //Response.Write("<script>alert('Data has been successfully updated');</script>");
+                        messagebox.Visible = true;
+                        messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
+                        txtcontent1.Text = txtheading.Text = txtcontent.Text = txtlink.Text = "";
+                    }
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = true;
+                    ImageSizeAlert.Visible = false;
                     txtcontent1.Text = txtheading.Text = txtcontent.Text = txtlink.Text = "";
 
                 }
@@ -153,7 +162,8 @@ namespace B2cWebsiteAdmin.AdminModule
                 {
                     //Response.Write("<script>alert('error something wrong ');</script>");
                     messagebox.Visible = false;
-                    messageboxerror.Visible = true;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
                     txtcontent1.Text = txtheading.Text = txtcontent.Text = txtlink.Text = "";
 
                 }

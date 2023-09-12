@@ -33,6 +33,15 @@ namespace B2cWebsiteAdmin.AdminModule
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageboxerror;
 
         /// <summary>
+        /// ImageSizeAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ImageSizeAlert;
+
+        /// <summary>
         /// lisection1heading control.
         /// </summary>
         /// <remarks>

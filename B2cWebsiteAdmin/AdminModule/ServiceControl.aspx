@@ -74,7 +74,7 @@
                                         <asp:TemplateField HeaderText="MANAGE">
                                             <ItemTemplate>
                                                 <asp:LinkButton runat="server" CssClass="btn btn-sm btn-primary" ID="btnEdit" CommandName="Edit" Text="EDIT" ></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <asp:LinkButton runat="server" CssClass="btn btn-sm btn-danger" ID="btnDelete" CommandName="Delete" Text="DELETE" ></asp:LinkButton>
+                                                <asp:LinkButton runat="server" CssClass="btn btn-sm btn-danger" OnClientClick="return confirm('Are you sure you want to delete this Service?');" ID="btnDelete" CommandName="Delete" Text="DELETE" ></asp:LinkButton>
                                             </ItemTemplate>
                                             <EditItemTemplate>
                                                 <asp:LinkButton runat="server" CssClass="btn btn-sm btn-success" ID="btnUpdate" CommandName="Update" Text="UPDATE" ></asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -95,6 +95,9 @@
                                     <SortedDescendingHeaderStyle BackColor="#383838" />
 
                                 </asp:GridView>
+                                <div id="MyDialog" runat="server" style="display:none">
+            
+        </div>
                             </div>
                         </div>
                     </div>
@@ -102,4 +105,5 @@
             </div>
         </div>
     </div>
+    
 </asp:Content>

@@ -33,6 +33,24 @@ namespace B2cWebsiteAdmin.AdminModule
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageboxerror;
 
         /// <summary>
+        /// ImageSizeAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ImageSizeAlert;
+
+        /// <summary>
+        /// tabpan1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tabpan1;
+
+        /// <summary>
         /// lnkbtn1 control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace B2cWebsiteAdmin.AdminModule
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn1;
+
+        /// <summary>
+        /// tabpan2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tabpan2;
 
         /// <summary>
         /// lnkBtnSlider2 control.
@@ -51,13 +78,13 @@ namespace B2cWebsiteAdmin.AdminModule
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnSlider2;
 
         /// <summary>
-        /// thirdslide control.
+        /// tabpan3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl thirdslide;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tabpan3;
 
         /// <summary>
         /// lnkbtnslider3 control.
@@ -150,15 +177,6 @@ namespace B2cWebsiteAdmin.AdminModule
         protected global::System.Web.UI.WebControls.TextBox s1txtheading;
 
         /// <summary>
-        /// s1txtcontent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox s1txtcontent;
-
-        /// <summary>
         /// s1txtlink control.
         /// </summary>
         /// <remarks>
@@ -175,6 +193,15 @@ namespace B2cWebsiteAdmin.AdminModule
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtlink1s1;
+
+        /// <summary>
+        /// s1txtcontent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox s1txtcontent;
 
         /// <summary>
         /// S1btn_submit control.
@@ -294,15 +321,6 @@ namespace B2cWebsiteAdmin.AdminModule
         protected global::System.Web.UI.WebControls.TextBox sliderheading2s2;
 
         /// <summary>
-        /// slidercontent2s2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox slidercontent2s2;
-
-        /// <summary>
         /// sliderlink1s2 control.
         /// </summary>
         /// <remarks>
@@ -312,15 +330,6 @@ namespace B2cWebsiteAdmin.AdminModule
         protected global::System.Web.UI.WebControls.TextBox sliderlink1s2;
 
         /// <summary>
-        /// link2Row control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl link2Row;
-
-        /// <summary>
         /// sliderlink2s2 control.
         /// </summary>
         /// <remarks>
@@ -328,6 +337,15 @@ namespace B2cWebsiteAdmin.AdminModule
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox sliderlink2s2;
+
+        /// <summary>
+        /// slidercontent2s2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox slidercontent2s2;
 
         /// <summary>
         /// btn_update1 control.
@@ -438,15 +456,6 @@ namespace B2cWebsiteAdmin.AdminModule
         protected global::System.Web.UI.WebControls.TextBox s3txtheading;
 
         /// <summary>
-        /// s3txtcontent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox s3txtcontent;
-
-        /// <summary>
         /// s3txtlonk1 control.
         /// </summary>
         /// <remarks>
@@ -463,6 +472,15 @@ namespace B2cWebsiteAdmin.AdminModule
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtlink2s3;
+
+        /// <summary>
+        /// s3txtcontent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox s3txtcontent;
 
         /// <summary>
         /// s3btn_submit control.

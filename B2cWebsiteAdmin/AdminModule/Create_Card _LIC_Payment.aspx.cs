@@ -62,7 +62,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "";
                 int fileSize1 = 0, fileSize2 = 0;
@@ -126,7 +126,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -148,7 +148,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -165,6 +165,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataCreditLic();
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         //Response.Write("<script>alert('Data has been successfully updated');</script>");
                         txtHeading1.Text = txtHeading2.Text = txtbuttonLink.Text = txtContent1.Text = "";
                     }
@@ -172,10 +173,19 @@ namespace B2cWebsiteAdmin.AdminModule
                     {
                         GetDataCreditLic();
                         messagebox.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         messageboxerror.Visible = true;
                         // Response.Write("<script>alert('error something wrong ');</script>");
                         txtHeading1.Text = txtHeading2.Text = txtbuttonLink.Text = txtContent1.Text = "";
                     }
+                }
+                else
+                {
+                    messagebox.Visible = false;
+                    ImageSizeAlert.Visible = true;
+                    messageboxerror.Visible = false;
+                    // Response.Write("<script>alert('error something wrong ');</script>");
+                    txtHeading1.Text = txtHeading2.Text = txtbuttonLink.Text = txtContent1.Text = "";
                 }
             }
             catch (Exception ex)

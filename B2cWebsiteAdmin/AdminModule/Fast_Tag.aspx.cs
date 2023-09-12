@@ -52,7 +52,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 70 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "", filename3 = "";
                 int fileSize3 = 0, fileSize1 = 0, fileSize2 = 0;
@@ -137,15 +137,12 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
                 {
                     filename1 = ViewState["image1"].ToString();
-
-
-
                 }
                 if (image2.HasFile)
                 {
@@ -159,7 +156,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -180,7 +177,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -188,7 +185,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     filename3 = ViewState["image3"].ToString();
 
                 }
-                if (status == true)
+                if (status == true && count==0)
                 {
                     int result = ClsFastTag.DataInsertFastTag(filename1, filename2, filename3, heading1, heading2, heading3, content1, content2, content3, buttonlink, "");
                     if (result > 0)
@@ -196,6 +193,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataFastT();
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         //Response.Write("<script>alert('Data has been successfully updated');</script>");
                         txtheading1.Text = txtheading2.Text = txtheading3.Text = txtbuttonLink.Text = txtcontent3.Text = txtcontent2.Text = txtContent1.Text = "";
                     }
@@ -203,10 +201,17 @@ namespace B2cWebsiteAdmin.AdminModule
                     {
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                         //Response.Write("<script>alert('error something wrong ');</script>");
                         txtheading1.Text = txtheading2.Text = txtheading3.Text = txtbuttonLink.Text = txtcontent3.Text = txtcontent2.Text = txtContent1.Text = "";
 
                     }
+                }
+                else
+                {
+                    ImageSizeAlert.Visible = true;
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
                 }
             }
             catch (Exception ex)

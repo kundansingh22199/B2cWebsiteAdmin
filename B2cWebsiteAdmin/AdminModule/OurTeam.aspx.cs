@@ -92,7 +92,7 @@ namespace B2cWebsiteAdmin.AdminModule
             string userid = Session["userid"].ToString();
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename = "";
                 int fileSize1 = 0;
@@ -109,6 +109,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
+                        count++;
                         lblmassage.Text = "Don't match file Size";
                         lblmassage.ForeColor = Color.Red;
                     }
@@ -119,31 +120,38 @@ namespace B2cWebsiteAdmin.AdminModule
                     lblmassage.Text = "Choice Profile Image";
                     lblmassage.ForeColor = Color.Red;
                 }
-                string strcon = getConnectionString.getconnection();
-                SqlConnection con = new SqlConnection(strcon);
-                SqlCommand cmd = new SqlCommand("SP_TblTeamMaster", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.Parameters.AddWithValue("@Action", "Insert");
-                cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                cmd.Parameters.AddWithValue("@RoleType", dd_Role.SelectedItem.Text);
-                cmd.Parameters.AddWithValue("@ProfileImg", filename);
-                //cmd.Parameters.AddWithValue("@Remarks", txtRemark.Text);
-                cmd.Parameters.AddWithValue("@SocialMdaLink1", txtSociallink.Text);
-                cmd.Parameters.AddWithValue("@SocialMdaLink2", txtSociallink2.Text);
-                cmd.Parameters.AddWithValue("@SocialMdaLink3", txtSociallink3.Text);
-                cmd.Parameters.AddWithValue("@CreatedBy", userid);
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
+                if (count == 0) 
+                { 
+                    string strcon = getConnectionString.getconnection();
+                    SqlConnection con = new SqlConnection(strcon);
+                    SqlCommand cmd = new SqlCommand("SP_TblTeamMaster", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.AddWithValue("@Action", "Insert");
+                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
+                    cmd.Parameters.AddWithValue("@RoleType", dd_Role.SelectedItem.Text);
+                    cmd.Parameters.AddWithValue("@ProfileImg", filename);
+                    //cmd.Parameters.AddWithValue("@Remarks", txtRemark.Text);
+                    cmd.Parameters.AddWithValue("@SocialMdaLink1", txtSociallink.Text);
+                    cmd.Parameters.AddWithValue("@SocialMdaLink2", txtSociallink2.Text);
+                    cmd.Parameters.AddWithValue("@SocialMdaLink3", txtSociallink3.Text);
+                    cmd.Parameters.AddWithValue("@CreatedBy", userid);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
                 
-                cmd.ExecuteNonQuery();
-                con.Close();
-                GetTeam();
-                lblmassage.Text = " Resisration  Success ";
-                lblmassage.ForeColor = Color.Green;
-                //txtName.Text = txtRemark.Text = txtSociallink.Text = txtSociallink2.Text = "";
-                txtName.Text  = txtSociallink.Text = txtSociallink2.Text = txtSociallink3.Text = "";
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    GetTeam();
+                    lblmassage.Text = " Resisration  Success ";
+                    lblmassage.ForeColor = Color.Green;
+                    //txtName.Text = txtRemark.Text = txtSociallink.Text = txtSociallink2.Text = "";
+                    txtName.Text  = txtSociallink.Text = txtSociallink2.Text = txtSociallink3.Text = "";
+                }
+                else
+                {
+                    ImageSizeAlert.Visible = true;
+                }
             }
 
             catch (Exception ex)
@@ -206,7 +214,7 @@ namespace B2cWebsiteAdmin.AdminModule
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             string userid = Session["userid"].ToString();
-            int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+            int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
             bool status = true;
             string filename = "";
             int fileSize1 = 0;
@@ -228,30 +236,41 @@ namespace B2cWebsiteAdmin.AdminModule
                     filename = "~/AdminModule/Images/" + filename;
                     status = checkexetion(fileUpload);
                 }
+                else
+                {
+                    count++;
+                }
+            }
+            if (count == 0)
+            {
+                string strcon = getConnectionString.getconnection();
+                SqlConnection con = new SqlConnection(strcon);
+                Label id = GridView1.Rows[e.RowIndex].FindControl("lblid") as Label;
+                SqlCommand cmd = new SqlCommand("SP_TblTeamMasterUpdate", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", Convert.ToInt32(id.Text));
+                cmd.Parameters.AddWithValue("@name", Name.Text);
+                cmd.Parameters.AddWithValue("@RoleType", dropDownList.SelectedItem.Text);
+                cmd.Parameters.AddWithValue("@ProfileImg", filename);
+                //cmd.Parameters.AddWithValue("@Remarks", Remark.Text);
+                cmd.Parameters.AddWithValue("@SocialMdaLink1", socialLink1.Text);
+                cmd.Parameters.AddWithValue("@SocialMdaLink2", socialLink2.Text);
+                cmd.Parameters.AddWithValue("@SocialMdaLink3", socialLink3.Text);
+                cmd.Parameters.AddWithValue("@UpdatedBy", userid);
 
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                GridView1.EditIndex = -1;
+                GetTeam();
+                //id.Text = Name.Text = Remark.Text = socialLink1.Text = socialLink2.Text = "";
+                id.Text = Name.Text = socialLink1.Text = socialLink2.Text = socialLink3.Text = "";
             }
-            string strcon = getConnectionString.getconnection();
-            SqlConnection con = new SqlConnection(strcon);
-            Label id = GridView1.Rows[e.RowIndex].FindControl("lblid") as Label;
-            SqlCommand cmd = new SqlCommand("SP_TblTeamMasterUpdate", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id", Convert.ToInt32(id.Text));
-            cmd.Parameters.AddWithValue("@name", Name.Text);
-            cmd.Parameters.AddWithValue("@RoleType", dropDownList.SelectedItem.Text);
-            cmd.Parameters.AddWithValue("@ProfileImg", filename);
-            //cmd.Parameters.AddWithValue("@Remarks", Remark.Text);
-            cmd.Parameters.AddWithValue("@SocialMdaLink1", socialLink1.Text);
-            cmd.Parameters.AddWithValue("@SocialMdaLink2", socialLink2.Text);
-            cmd.Parameters.AddWithValue("@SocialMdaLink3", socialLink3.Text);
-            cmd.Parameters.AddWithValue("@UpdatedBy", userid);
-        
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-            GridView1.EditIndex = -1;
-            GetTeam();
-            //id.Text = Name.Text = Remark.Text = socialLink1.Text = socialLink2.Text = "";
-            id.Text = Name.Text = socialLink1.Text = socialLink2.Text = socialLink3.Text = "";
+            else
+            {
+                ImageSizeAlert.Visible = true;
             }
+        }
+            
     }
 }

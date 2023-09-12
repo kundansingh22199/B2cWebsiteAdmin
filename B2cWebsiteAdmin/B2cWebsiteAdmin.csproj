@@ -99,14 +99,19 @@
     <Content Include="AdminModule\AdminDashboard.aspx" />
     <Content Include="AdminModule\AEPS.aspx" />
     <Content Include="AdminModule\BBPS.aspx" />
+    <Content Include="AdminModule\Books.aspx" />
     <Content Include="AdminModule\Cash_Management_Service.aspx" />
     <Content Include="AdminModule\Community.aspx" />
     <Content Include="AdminModule\Contactus.aspx" />
     <Content Include="AdminModule\Create_Card _LIC_Payment.aspx" />
     <Content Include="AdminModule\DMT.aspx" />
+    <Content Include="AdminModule\Electronic.aspx" />
+    <Content Include="AdminModule\Faishon.aspx" />
     <Content Include="AdminModule\Fast_Tag.aspx" />
+    <Content Include="AdminModule\Grocery.aspx" />
     <Content Include="AdminModule\Images\bullet.png" />
     <Content Include="AdminModule\Images\prepaid_img.png" />
+    <Content Include="AdminModule\Medicine.aspx" />
     <Content Include="AdminModule\Micro_ATM.aspx" />
     <Content Include="AdminModule\Pancart_Center.aspx" />
     <Content Include="AdminModule\PrepaidCard.aspx" />
@@ -242,6 +247,13 @@
     <Compile Include="AdminModule\BBPS.aspx.designer.cs">
       <DependentUpon>BBPS.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminModule\Books.aspx.cs">
+      <DependentUpon>Books.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminModule\Books.aspx.designer.cs">
+      <DependentUpon>Books.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminModule\Cash_Management_Service.aspx.cs">
       <DependentUpon>Cash_Management_Service.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -277,12 +289,40 @@
     <Compile Include="AdminModule\DMT.aspx.designer.cs">
       <DependentUpon>DMT.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminModule\Electronic.aspx.cs">
+      <DependentUpon>Electronic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminModule\Electronic.aspx.designer.cs">
+      <DependentUpon>Electronic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModule\Faishon.aspx.cs">
+      <DependentUpon>Faishon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminModule\Faishon.aspx.designer.cs">
+      <DependentUpon>Faishon.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminModule\Fast_Tag.aspx.cs">
       <DependentUpon>Fast_Tag.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdminModule\Fast_Tag.aspx.designer.cs">
       <DependentUpon>Fast_Tag.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModule\Grocery.aspx.cs">
+      <DependentUpon>Grocery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminModule\Grocery.aspx.designer.cs">
+      <DependentUpon>Grocery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModule\Medicine.aspx.cs">
+      <DependentUpon>Medicine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminModule\Medicine.aspx.designer.cs">
+      <DependentUpon>Medicine.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminModule\Micro_ATM.aspx.cs">
       <DependentUpon>Micro_ATM.aspx</DependentUpon>

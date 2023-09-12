@@ -59,7 +59,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 60 * 1024; int maxsize = 1024 * 1024 ;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 ,count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "";
                 int fileSize1 = 0, fileSize2 = 0;
@@ -158,7 +158,8 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        filename1 = ViewState["image1"].ToString();
+                        count++;
                     }
                 }
                 else
@@ -178,7 +179,8 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        filename2 = ViewState["image2"].ToString();
+                        count++;
                     }
                 }
                 else
@@ -187,7 +189,7 @@ namespace B2cWebsiteAdmin.AdminModule
 
                 }
 
-                if (status == true)
+                if (status == true && count==0)
                 {
                     int result = clsAadhar.DataInsertAadharPay(filename1, filename2, heading1, heading2, content1,paragraph1,paragraph2,paragraph3,paragraph4,paragraph5, buttonlink, "");
                     if (result > 0)
@@ -198,6 +200,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         //lblmassage.ForeColor = Color.Green;
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         txtfirstheading1.Text = txtfirstheading2.Text = txtcontent.Text = txtbuttonlink.Text = txtparagraph5.Text = txtparagraph4.Text = txtparagraph3.Text = txtparagraph2.Text = txtparagraph1.Text = "";
                     }
                     else
@@ -205,10 +208,17 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataAdhar();
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                         //Response.Write("<script>alert('error something wrong ');</script>");
                         txtfirstheading1.Text = txtfirstheading2.Text = txtcontent.Text = txtbuttonlink.Text = txtparagraph5.Text = txtparagraph4.Text = txtparagraph3.Text = txtparagraph2.Text = txtparagraph1.Text = "";
 
                     }
+                }
+                else
+                {
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
                 }
             }
             catch (Exception ex)

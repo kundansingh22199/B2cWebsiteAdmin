@@ -69,7 +69,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                 int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                 int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024;
                 bool status = true,sizematch=true;
                
                 int fileSize1 = 0;
@@ -264,6 +264,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         {
                             messagebox.Visible = true;
                             messageboxerror.Visible = false;
+                            ImageSizeAlert.Visible = false;
                             GetData();
                             ClientScript.RegisterStartupScript(this.GetType(), "alert", "HideLabel();", true);
                             txtownername.Text = txtcompanyname.Text = txtloginlink.Text = txtwhatsapplink.Text = txtlinkdinlink.Text = txttwitterlink.Text = txtcontact.Text= txtAdhar.Text= txtpanno.Text="";
@@ -273,10 +274,14 @@ namespace B2cWebsiteAdmin.AdminModule
                         {
                             messagebox.Visible = false;
                             messageboxerror.Visible = true;
+                            ImageSizeAlert.Visible = false;
                         }
-
-                       
-
+                    }
+                    else
+                    {
+                        ImageSizeAlert.Visible = true;
+                        messagebox.Visible = false;
+                        messageboxerror.Visible = false;
                     }
                 }
             }

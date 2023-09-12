@@ -59,7 +59,7 @@ namespace B2cWebsiteAdmin.AdminModule
 
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024,count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "";
                 int  fileSize1 = 0, fileSize2 = 0;
@@ -154,15 +154,13 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        filename1 = ViewState["image1"].ToString();
+                        count++;
                     }
                 }
                 else
                 {
                     filename1 = ViewState["image1"].ToString();
-
-
-
                 }
                 //if (image2.HasFile)
                 //{
@@ -185,7 +183,7 @@ namespace B2cWebsiteAdmin.AdminModule
 
                 //}
 
-                if (status == true)
+                if (status == true && count==0)
                 {
                     //int result = clsBBPS.DataInsertBBPS(filename1, filename2, heading1, heading2,content1,paragraph1,paragraph2,paragraph3,paragraph4, buttonlink, "");
                     int result = clsBBPS.DataInsertBBPS(filename1, heading1,content1,paragraph1,paragraph2,paragraph3,paragraph4, "");
@@ -194,6 +192,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataBbps();
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                       //  Response.Write("<script>alert('Data has been successfully updated');</script>");
                         //txtsecondheading.Text = txtfirstheading.Text = txtcontent.Text = txtparagraph1.Text = txtparagraph2.Text = txtparagraph3.Text = txtparagraph4.Text = "";
                         txtfirstheading.Text = txtcontent.Text = txtparagraph1.Text = txtparagraph2.Text = txtparagraph3.Text = txtparagraph4.Text = "";
@@ -203,11 +202,18 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataBbps();
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                         //Response.Write("<script>alert('error something wrong ');</script>");
                         //txtsecondheading.Text = txtfirstheading.Text = txtcontent.Text = txtparagraph1.Text = txtparagraph2.Text = txtparagraph3.Text = txtparagraph4.Text = "";
                         txtfirstheading.Text = txtcontent.Text = txtparagraph1.Text = txtparagraph2.Text = txtparagraph3.Text = txtparagraph4.Text = "";
 
                     }
+                }
+                else
+                {
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
                 }
             }
             catch (Exception ex)

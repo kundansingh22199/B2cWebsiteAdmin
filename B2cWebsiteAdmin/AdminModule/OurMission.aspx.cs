@@ -54,7 +54,7 @@ namespace B2cWebsiteAdmin.AdminModule
             string userid = Session["userid"].ToString();
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
 
                 int fileSize1 = 0;
@@ -72,6 +72,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     else
                     {
                         Imageupload = ViewState["IamgeOurMission"].ToString();
+                        count++;
                     }
                 }
 
@@ -95,8 +96,9 @@ namespace B2cWebsiteAdmin.AdminModule
                 {
                     ContentSecound = lblcontent2.Text;
                 }
-                if (status == true)
+                if (status == true && count==0)
                 {
+                    int result = 0;
                     string strcon = getConnectionString.getconnection();
                     SqlConnection con = new SqlConnection(strcon);
                     SqlCommand cmd = new SqlCommand("Sp_TblOurMission", con);
@@ -107,20 +109,31 @@ namespace B2cWebsiteAdmin.AdminModule
                     cmd.Parameters.AddWithValue("@CreateBy", userid);
                     cmd.Parameters.AddWithValue("@UpdateBy", userid);
                     con.Open();
-                    cmd.ExecuteNonQuery();
+                    result=cmd.ExecuteNonQuery();
                     con.Close();
+                    if (result > 0)
+                    {
+                        messagebox.Visible = true;
+                        messageboxerror.Visible = false;
+                        GetMission();
+                    }
+                    else
+                    {
+                        messagebox.Visible = false;
+                        messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
+                    }
                     //lblmassage.Text = "Update Success ";
                     //lblmassage.ForeColor = Color.Green;
-                    messagebox.Visible = true;
-                    messageboxerror.Visible = false;
-                    GetMission();
+                    
                     txtcontent2.Text = txtContent1.Text = "";
 
                 }
                 else
                 {
                     messagebox.Visible = false;
-                    messageboxerror.Visible = true;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
                 }
             }
             catch (Exception ex)

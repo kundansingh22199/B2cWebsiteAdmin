@@ -21,6 +21,10 @@
                                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                             <strong>Error!</strong> something wrong
                                         </div>
+                                        <div class="alert alert alert-dismissible bg-danger" runat="server" visible="false" id="ImageSizeAlert">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>Error!</strong> Don't Match Image Size 10KB to 2MB  Or Extension
+                                        </div>
                                         <div class="tab-pane active" id="SliderSectionOne" runat="server">
                                             <div class="card">
                                                 <div class="card-header">
@@ -30,21 +34,47 @@
                                                         <div class="col-sm-12">
                                                             <!-- Line Tooltip card start -->
                                                             <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <strong>Heading :</strong><asp:Label ID="lblheading" runat="server"></asp:Label><br />
-                                                                    <strong>Content:</strong><asp:Label ID="lblcontent" runat="server"></asp:Label><br />
+                                                                <div class="col-sm-6">
+                                                                    <strong><h3>Main Heading :</h3></strong><asp:Label ID="lblheading" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <strong><h3>Main Content:</h3></strong><asp:Label ID="lblcontent" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <hr />
+                                                                <div class="col-sm-4">
                                                                     <strong>Division First Heading :</strong><asp:Label ID="lblDivFiHeading" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-8">
                                                                     <strong>Division First Content:</strong><asp:Label ID="lblDivFicontent" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-4">
                                                                     <strong>Division Second Heading:</strong><asp:Label ID="lblDivSeHeading" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-8">
                                                                     <strong>Division Second Content :</strong><asp:Label ID="lblDivSecontent" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-4">
                                                                     <strong>Division Third Heading :</strong><asp:Label ID="lblDivThHeading" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-8">
                                                                     <strong>Division Third Content:</strong><asp:Label ID="lblDivThcontent" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-4">
                                                                     <strong>Division Fourth Heading  :</strong><asp:Label ID="lblDivFoHeading" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-8">
                                                                     <strong>Division Fourth Content: :</strong><asp:Label ID="lblDivFocontent" runat="server"></asp:Label><br />
-
+                                                                </div>
+                                                                <div class="col-sm-4">
                                                                     <strong>Division Fifth Heading  :</strong><asp:Label ID="lblDivFifHeading" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-8">
                                                                     <strong>Division Fifth Content: :</strong><asp:Label ID="lblDivFifcontent" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-4">
                                                                     <strong>Division Sixth Heading  :</strong><asp:Label ID="lblDivSiHeading" runat="server"></asp:Label><br />
+                                                                </div>
+                                                                <div class="col-sm-8">
                                                                     <strong>Division Sixth Content: :</strong><asp:Label ID="lblDivSicontent" runat="server"></asp:Label><br />
                                                                 </div>
                                                             </div>
@@ -83,28 +113,28 @@
                                                 <div class="card-block mx-auto my-2">
                                                     <div class="form-group row">
                                                         <div class="col-sm-3">
-                                                            <asp:Image ID="div1image"  Height="200" Width="200" runat="server" />
-                                                            <p style="text-align:center"><b>Division First Image</b></p>
+                                                            <asp:Image ID="div1image" Height="200" Width="200" runat="server" />
+                                                            <p style="text-align: center"><b>Division First Image</b></p>
                                                         </div>
-                                                        <div class="col-sm-3"> 
-                                                            <asp:Image ID="div2image"  Height="200" Width="200" runat="server" />
-                                                             <p style="text-align:center"><b>Division Second Image</b></p>
+                                                        <div class="col-sm-3">
+                                                            <asp:Image ID="div2image" Height="200" Width="200" runat="server" />
+                                                            <p style="text-align: center"><b>Division Second Image</b></p>
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <asp:Image ID="div3image" Height="200" Width="200" runat="server" />
-                                                             <p style="text-align:center"><b>Division Third Image</b></p>
+                                                            <p style="text-align: center"><b>Division Third Image</b></p>
                                                         </div>
                                                         <div class="col-sm-3">
-                                                            <asp:Image ID="div4image"  Height="200" Width="200" runat="server" />
-                                                             <p style="text-align:center"><b>Division Fourth Image</b></p>
+                                                            <asp:Image ID="div4image" Height="200" Width="200" runat="server" />
+                                                            <p style="text-align: center"><b>Division Fourth Image</b></p>
                                                         </div>
                                                         <div class="col-sm-3">
-                                                            <asp:Image ID="div5image"  Height="200" Width="200" runat="server" />
-                                                             <p style="text-align:center"><b>Division Fifth Image</b></p>
+                                                            <asp:Image ID="div5image" Height="200" Width="200" runat="server" />
+                                                            <p style="text-align: center"><b>Division Fifth Image</b></p>
                                                         </div>
                                                         <div class="col-sm-3">
-                                                            <asp:Image ID="div6image"  Height="200" Width="200" runat="server" />
-                                                             <p style="text-align:center"><b>Division Sixth Image</b></p>
+                                                            <asp:Image ID="div6image" Height="200" Width="200" runat="server" />
+                                                            <p style="text-align: center"><b>Division Sixth Image</b></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -190,7 +220,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Heading :</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtheading"  onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter  Heading  ">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtheading" onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter  Heading  ">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -198,7 +228,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Content :</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtcontent"  onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter  Heading  ">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtcontent" onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter  Heading  ">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -206,7 +236,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Division First Heading :</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtfirstheading"  onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division First Heading  ">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtfirstheading" onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division First Heading  ">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -214,7 +244,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Division First Content :</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtfirstcontent"  onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder=" First Division First Content">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtfirstcontent" onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder=" First Division First Content">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -222,7 +252,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Division Second Heading :</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtSecondHeading"  onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Division Second Heading">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtSecondHeading" onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Division Second Heading">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -230,7 +260,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Division Second Content  :</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtsecontContent"  onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Enter Division Second Content">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtsecontContent" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Enter Division Second Content">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -238,7 +268,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Division Third Heading:</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtthirdheading"  onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division Third Heading">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtthirdheading" onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division Third Heading">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -246,7 +276,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Division Third Content  :</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtthirdcontent"  onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Enter Division Third Content">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtthirdcontent" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Enter Division Third Content">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -254,7 +284,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Division Fourth Heading:</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtfourthheading"  onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division Fourth Heading">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtfourthheading" onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division Fourth Heading">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -262,7 +292,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Division Fourth Content:</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtfouthcontent"  onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division Fourth Content">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtfouthcontent" onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division Fourth Content">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -271,7 +301,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-4 col-form-label fillData">Division Fifth Heading:</label>
                                                             <div class="col-sm-8">
-                                                                <asp:TextBox ID="txtfifthheading"  onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division Fourth Heading">    </asp:TextBox>
+                                                                <asp:TextBox ID="txtfifthheading" onkeypress="return isAlfa(event,this);" runat="server" CssClass="form-control" placeholder="Enter Division Fourth Heading">    </asp:TextBox>
                                                             </div>
                                                         </div>
                                                     </div>

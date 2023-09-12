@@ -33,6 +33,15 @@ namespace B2cWebsiteAdmin.AdminModule
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageboxerror;
 
         /// <summary>
+        /// ImageSizeAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ImageSizeAlert;
+
+        /// <summary>
         /// imagec1 control.
         /// </summary>
         /// <remarks>
@@ -123,15 +132,6 @@ namespace B2cWebsiteAdmin.AdminModule
         protected global::System.Web.UI.WebControls.TextBox txtheading;
 
         /// <summary>
-        /// txtcontent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcontent;
-
-        /// <summary>
         /// txtlink control.
         /// </summary>
         /// <remarks>
@@ -139,6 +139,15 @@ namespace B2cWebsiteAdmin.AdminModule
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtlink;
+
+        /// <summary>
+        /// txtcontent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtcontent;
 
         /// <summary>
         /// btn_update control.

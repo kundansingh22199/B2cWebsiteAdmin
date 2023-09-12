@@ -173,6 +173,10 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
                                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                             <strong>Error!</strong> something wrong
                                         </div>
+                                    <div class="alert alert alert-dismissible bg-danger" runat="server" visible="false" id="ImageSizeAlert">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>Error!</strong> Don't Match Image Size 10KB to 2MB  Or Extension
+                                        </div>
                                     <div class="cards-list">
                                         <div class="card 1" style="width: 500px; height: 350px">
                                             <div class="card_image">

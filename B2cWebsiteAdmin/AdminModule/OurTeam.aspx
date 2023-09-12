@@ -66,7 +66,10 @@
                                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                             <strong>Error!</strong> something wrong
                                         </div>
-
+                                        <div class="alert alert alert-dismissible bg-danger" runat="server" visible="false" id="ImageSizeAlert">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>Error!</strong> Don't Match Image Size 10KB to 2MB  Or Extension
+                                        </div>
 
 
 

@@ -22,6 +22,10 @@
                                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                             <strong>Error!</strong> something wrong
                                         </div>
+                                        <div class="alert alert alert-dismissible bg-danger" runat="server" visible="false" id="ImageSizeAlert">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            <strong>Error!</strong> Don't Match Image Size 10KB to 2MB  Or Extension
+                                        </div>
                                         <!-- Basic Form Inputs card start -->
                                         <div class="card">
 
@@ -155,21 +159,19 @@
 
 
                                                     <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Slider Heading</label>
-                                                        <div class="col-sm-9">
+                                                        <label class="col-sm-2 col-form-label">Slider Heading</label>
+                                                        <div class="col-sm-4">
                                                             <asp:TextBox ID="txtheading" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Hading" MaxLength="38" MinLenth="20"></asp:TextBox>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Content</label>
-                                                        <div class="col-sm-9">
-                                                            <asp:TextBox ID="txtcontent" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Contant"></asp:TextBox>
+                                                        <label class="col-sm-2 col-form-label">Link</label>
+                                                        <div class="col-sm-4">
+                                                            <asp:TextBox ID="txtlink" onkeypress="return isUrlValid(event)"  runat="server" class="form-control" placeholder="Type your link"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-sm-3 col-form-label">Link</label>
-                                                        <div class="col-sm-9">
-                                                            <asp:TextBox ID="txtlink" onkeypress="return isUrlValid(event)"  runat="server" class="form-control" placeholder="Type your link"></asp:TextBox>
+                                                        <label class="col-sm-2 col-form-label">Content</label>
+                                                        <div class="col-sm-10">
+                                                            <asp:TextBox ID="txtcontent" onkeypress="return isAlfa(event,this);" runat="server" class="form-control" placeholder="Type your Contant"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">

@@ -49,7 +49,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 //string filename1 = "", filename2 = "";
                 string filename1 = "";
@@ -126,7 +126,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -146,7 +146,7 @@ namespace B2cWebsiteAdmin.AdminModule
                 //    }
                 //    else
                 //    {
-
+                //      count++;
                 //    }
                 //}
                 //else
@@ -155,7 +155,7 @@ namespace B2cWebsiteAdmin.AdminModule
 
                 //}
 
-                if (status == true)
+                if (status == true && count==0)
                 {
                     //int result = paidRecharge.DataInsertSafeGold(filename1, filename2, heading1, heading2, content1, buttonlink, "");
                     int result = paidRecharge.DataInsertRecharge(filename1, heading1, content1, content2, content3, "");
@@ -165,6 +165,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         //lblmessage.ForeColor = Color.Green;
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         GetDataPrecharge();
                         //txtheading1.Text = txtheading2.Text = txtbuttonlink.Text = txtcontent.Text = txtheading2.Text = txtheading1.Text = "";
                         txtheading1.Text = txtcontent1.Text = txtcontent2.Text = txtcontent3.Text = "";
@@ -179,6 +180,12 @@ namespace B2cWebsiteAdmin.AdminModule
                         //txtheading1.Text = txtheading2.Text = txtbuttonlink.Text = txtcontent.Text = txtheading2.Text = txtheading1.Text = "";
                         txtheading1.Text = txtcontent1.Text = txtcontent2.Text = txtcontent3.Text = "";
                     }
+                }
+                else
+                {
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
                 }
             }
             catch (Exception ex)

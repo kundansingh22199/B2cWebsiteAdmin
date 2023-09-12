@@ -71,7 +71,7 @@ namespace B2cWebsiteAdmin.AdminModule
             string userid = Session["userid"].ToString();
             try
             {
-                int minsize = 15* 1024; int maxsize = 300 * 1024;
+                int minsize = 10* 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "", filename3 = "", filename4 = "", filename5 = "", filename6 = "";
                 int fileSize1 = 0, fileSize2 = 0, fileSize3 = 0, fileSize4=0, fileSize5 = 0, fileSize6 = 0;
@@ -88,6 +88,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
+                        count++;
                         filename1 = ViewState["Div1image"].ToString();
                     }
                 }
@@ -107,6 +108,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
+                        count++;
                         filename2 = ViewState["Div2image"].ToString();
                     }
                 }
@@ -126,6 +128,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
+                        count++;
                         filename3 = ViewState["Div3image"].ToString();
                     }
                 }
@@ -145,6 +148,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
+                        count++;
                         filename4 = ViewState["Div4image"].ToString();
                     }
                 }
@@ -166,6 +170,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
+                        count++;
                         filename5 = ViewState["Div5image"].ToString();
                     }
                 }
@@ -187,6 +192,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
+                        count++;
                         filename6 = ViewState["Div6image"].ToString();
                     }
                 }
@@ -310,7 +316,7 @@ namespace B2cWebsiteAdmin.AdminModule
                 {
                     Div6heading2 = lblDivSiHeading.Text;
                 }
-                if (status == true)
+                if (status == true && count==0)
                 {
                     //int result = clsHomeSection3.HomeSection3Insert(filename1,filename2,filename3,filename4,heading1,content1,Div1heading2,Div2heading2,Div3heading2,Div4heading2,Div1content,Div2content,Div3content,Div4content,userid,userid);
                     int result = clsHomeSection3.HomeSection3Insert(filename1, filename2, filename3, filename4, filename5, filename6, heading1, content1, Div1heading2, Div2heading2, Div3heading2, Div4heading2, Div5heading2, Div6heading2, Div1content, Div2content, Div3content, Div4content, Div5content, Div6content, userid, userid);
@@ -319,6 +325,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDataHomeSection3();
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         //Response.Write("<script>alert('Data has been successfully updated');</script>");
                         txtheading.Text = txtcontent.Text =txtfirstcontent.Text=txtfirstheading.Text=txtsecontContent.Text=txtSecondHeading.Text="";
                         txtthirdcontent.Text = txtthirdheading.Text = txtfourthheading.Text = txtfouthcontent.Text = txtfifthheading.Text = txtfifthcontent.Text = txtsixthheading.Text = txtsixthcontent.Text = "";
@@ -328,12 +335,20 @@ namespace B2cWebsiteAdmin.AdminModule
                     {
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                         //Response.Write("<script>alert('error something wrong ');</script>");
                         txtheading.Text = txtcontent.Text = txtfirstcontent.Text = txtfirstheading.Text = txtsecontContent.Text = txtSecondHeading.Text = "";
                         txtthirdcontent.Text = txtthirdheading.Text = txtfourthheading.Text = txtfouthcontent.Text = txtfifthheading.Text = txtfifthcontent.Text = txtsixthheading.Text = txtsixthcontent.Text = "";
                     }
                 }
-
+                else
+                {
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
+                    txtheading.Text = txtcontent.Text = txtfirstcontent.Text = txtfirstheading.Text = txtsecontContent.Text = txtSecondHeading.Text = "";
+                    txtthirdcontent.Text = txtthirdheading.Text = txtfourthheading.Text = txtfouthcontent.Text = txtfifthheading.Text = txtfifthcontent.Text = txtsixthheading.Text = txtsixthcontent.Text = "";
+                }
 
 
             }

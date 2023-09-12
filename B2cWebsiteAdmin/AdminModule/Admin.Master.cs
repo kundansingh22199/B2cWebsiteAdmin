@@ -14,95 +14,51 @@ namespace B2cWebsiteAdmin.AdminModule
     {
         ClsServiceMaster clsService = new ClsServiceMaster();
         ClsProductMaster clsProduct = new ClsProductMaster();
+        ClsWebsite clsWebsite = new ClsWebsite();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["mobileno"] == null)
             {
                 Response.Redirect("../Default.aspx");
             }
-                CheckServiceAvility();
             GetServicesList();
             GetProductList();
-
+            GetData();
 
         }
-        public void CheckServiceAvility()
+
+        public void GetData()
         {
-            DataTable dt = clsService.GetServiceData();
-            if (dt.Rows.Count > 0)
+            try
             {
-                for(int i = 0; i < dt.Rows.Count; i++)
+
+
+                DataTable dt = clsWebsite.GetWeb();
+                if (dt.Rows.Count > 0)
                 {
-                    int serviceid = Convert.ToInt32(dt.Rows[i]["Id"]);
-                    //if (serviceid == 1)
-                    //{
-                    //    lblDmt.Visible = true;
-                    //}
-                    //if (serviceid == 2)
-                    //{
-                    //    lblAeps.Visible = true;
-                    //}
-                    //if (serviceid == 3)
-                    //{
-                    //    lblPrepaidCard.Visible = true;
-                    //}
-                    //if (serviceid == 4)
-                    //{
-                    //    lblRecharge.Visible = true;
-                    //}
-                    //if (serviceid == 5)
-                    //{
-                    //    lblBbps.Visible = true;
-                    //}
-                    //if (serviceid == 6)
-                    //{
-                    //    lblFasTag.Visible = true;
-                    //}
-                    //if (serviceid == 7)
-                    //{
-                    //    lblMicroAtm.Visible = true;
-                    //}
-                    //if (serviceid == 8)
-                    //{
-                    //    lblPanCard.Visible = true;
-                    //}
-                    //if (serviceid == 9)
-                    //{
-                    //    lblCash.Visible = true;
-                    //}
-                    //if (serviceid == 10)
-                    //{
-                    //    lblAddhar.Visible = true;
-                    //}
-                    //if (serviceid == 11)
-                    //{
-                    //    lblTravle.Visible = true;
-                    //}
-                    //if (serviceid == 12)
-                    //{
-                    //    lblSafeGold.Visible = true;
-                    //}
-                    //if (serviceid == 13)
-                    //{
-                    //    lblCreditCard.Visible = true;
-                    //}
-                    //else
-                    //{
-                    //    //lblDmt.Visible = false;
-                    //    //lblAeps.Visible = false;
-                    //    //lblPrepaidCard.Visible = false;
-                    //    //lblRecharge.Visible = false;
-                    //    //lblBbps.Visible = false;
-                    //    //lblFasTag.Visible = false;
-                    //    //lblMicroAtm.Visible = false;
-                    //    //lblPanCard.Visible = false;
-                    //    //lblCash.Visible = false;
-                    //    //lblAddhar.Visible = false;
-                    //    //lblTravle.Visible = false;
-                    //    //lblSafeGold.Visible = false;
-                    //    //lblCreditCard.Visible = false;
-                    //}
+                    ImgDashboard.ImageUrl = dt.Rows[0]["ComapnyLogo"].ToString();
+                    //lblowneername.Text = dt.Rows[0]["ownerName"].ToString();
+                    //lblcompanyName.Text = dt.Rows[0]["ComapanyName"].ToString();
+                    //lblcompanypan.Text = dt.Rows[0]["CompanyPan"].ToString();
+                    //lblcompanyAdhar.Text = dt.Rows[0]["CompanyAdharNo"].ToString();
+                    //lblemail.Text = dt.Rows[0]["ConatactEmail"].ToString();
+                    //lblcontact.Text = dt.Rows[0]["ContactNo"].ToString();
+                    //lbladress.Text = dt.Rows[0]["CompanyAddress"].ToString();
+                    //lblapk.Text = dt.Rows[0]["ApkLink"].ToString();
+                    //lblinstgram.Text = dt.Rows[0]["InstagramLink"].ToString();
+                    //lblfacebook.Text = dt.Rows[0]["FacebookLink"].ToString();
+                    //lbltwitte.Text = dt.Rows[0]["TwitterLink"].ToString();
+                    //lbllinkdin.Text = dt.Rows[0]["LinkdinLink"].ToString();
+                    //lblwhatsapp.Text = dt.Rows[0]["WhatsappLink"].ToString();
+                    //lblloginlink.Text = dt.Rows[0]["DomainName"].ToString();
+                    //lbldomainlink.Text = dt.Rows[0]["LoginLink"].ToString();
+                    //lblsupportContact.Text = dt.Rows[0]["SupportContactNo"].ToString();
+                    //lblsupportEmail.Text = dt.Rows[0]["SupportEmaild"].ToString();
                 }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         protected void GetServicesList()
@@ -110,17 +66,17 @@ namespace B2cWebsiteAdmin.AdminModule
             DataTable dt = clsService.GetServiceData();
 
             foreach (DataRow row in dt.Rows)
-                {
-                    string serviceName = row["ServiceName"].ToString();
-                    string serviceId = row["Id"].ToString();
+            {
+                string serviceName = row["ServiceName"].ToString();
+                string serviceId = row["Id"].ToString();
 
-                    HtmlGenericControl li = new HtmlGenericControl("li");
-                    HtmlAnchor a = new HtmlAnchor();
-                    //a.HRef = serviceId;
-                    a.InnerText = serviceName;
+                HtmlGenericControl li = new HtmlGenericControl("li");
+                HtmlAnchor a = new HtmlAnchor();
+                //a.HRef = serviceId;
+                a.InnerText = serviceName;
 
-                    li.Controls.Add(a);
-                    serviceList.Controls.Add(li);
+                li.Controls.Add(a);
+                serviceList.Controls.Add(li);
                 switch (serviceId)
                 {
                     case "1":
@@ -167,8 +123,8 @@ namespace B2cWebsiteAdmin.AdminModule
                         break;
 
                 }
-                }
             }
+        }
         protected void GetProductList()
         {
             DataTable dt = clsProduct.GetProductDataByStatus();
@@ -188,23 +144,23 @@ namespace B2cWebsiteAdmin.AdminModule
                 switch (ProductId)
                 {
                     case "1":
-                        a.HRef = "";
+                        a.HRef = "Electronic.aspx";
                         break;
 
                     case "2":
-                        a.HRef = "";
+                        a.HRef = "Faishon.aspx";
                         break;
                     case "3":
                         a.HRef = "";
                         break;
                     case "4":
-                        a.HRef = "";
+                        a.HRef = "Books.aspx";
                         break;
                     case "5":
-                        a.HRef = "";
+                        a.HRef = "Medicine.aspx";
                         break;
                     case "6":
-                        a.HRef = "";
+                        a.HRef = "Grocery.aspx";
                         break;
                     default:
                         break;

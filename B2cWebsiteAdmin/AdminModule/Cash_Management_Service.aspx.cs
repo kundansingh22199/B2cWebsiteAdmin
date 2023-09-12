@@ -54,7 +54,7 @@ namespace B2cWebsiteAdmin.AdminModule
         {
             try
             {
-                int minsize = 1 * 1024; int maxsize = 5 * 1024 * 1024;
+                int minsize = 10 * 1024; int maxsize = 2 * 1024 * 1024, count=0;
                 bool status = true;
                 string filename1 = "", filename2 = "";
                 int  fileSize1 = 0, fileSize2 = 0;
@@ -125,7 +125,8 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
+                        filename1 = ViewState["image1"].ToString();
                     }
                 }
                 else
@@ -145,7 +146,7 @@ namespace B2cWebsiteAdmin.AdminModule
                     }
                     else
                     {
-
+                        count++;
                     }
                 }
                 else
@@ -154,7 +155,7 @@ namespace B2cWebsiteAdmin.AdminModule
 
                 }
 
-                if (status == true)
+                if (status == true && count==0)
                 {
                     int result = clsCash.DataInsertCashManagement(filename1, filename2, heading1, heading2, content1, content2, buttonlink, "");
                     if (result > 0)
@@ -162,6 +163,7 @@ namespace B2cWebsiteAdmin.AdminModule
                         GetDatacashmanage();
                         messagebox.Visible = true;
                         messageboxerror.Visible = false;
+                        ImageSizeAlert.Visible = false;
                         // Response.Write("<script>alert('Data has been successfully updated');</script>");
 
                         txtheading1.Text = txtbuttonLink.Text = txtcontent2.Text = txtcontent1.Text = txtheading2.Text = "";
@@ -172,7 +174,14 @@ namespace B2cWebsiteAdmin.AdminModule
                         // Response.Write("<script>alert('error something wrong ');</script>");
                         messagebox.Visible = false;
                         messageboxerror.Visible = true;
+                        ImageSizeAlert.Visible = false;
                     }
+                }
+                else
+                {
+                    messagebox.Visible = false;
+                    messageboxerror.Visible = false;
+                    ImageSizeAlert.Visible = true;
                 }
             }
             catch (Exception ex)
